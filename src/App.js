@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from './Form';
+import MyForm from './MyForm';
 import NavBar1 from './components/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
@@ -13,8 +13,6 @@ class App extends Component {
   }
 
   render() {
-    //const { characters } = this.state
-
     return (
       <React.Fragment>
         <NavBar1 />
@@ -28,7 +26,7 @@ class App extends Component {
         </div>
         <div className="container">
 
-          <Form handleSubmit={this.handleSubmit} />
+          <MyForm handleSubmit={this.handleSubmit} />
         </div>
       </React.Fragment>
     )
