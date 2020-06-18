@@ -1,8 +1,14 @@
 import React from 'react'
 
 class Form extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
+    //this.state = {
+	//commandID:'',
+	//commmandKeyword:'',
+	//expectedVal:''
+    //}
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,15 +30,21 @@ class Form extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="commandID">Enter command ID: </label>
-        <input id="commandID" name="commandID" type="text" />
- 	
-	<label htmlFor="commandKeyword">Enter command keyword: </label>
-        <input id="commandKeyword" name="commandKeyword" type="text" />
-        
-	<label htmlFor="expectedVal">Enter expected value: </label>
-        <input id="expectedVal" name="expectedVal" type="text" />
-        <button>Submit!</button>
+	<div className="commandID">
+            <label htmlFor="commandID">Enter command ID: </label>
+            <input id="commandID" name="commandID" type="text" />
+ 	</div>
+	<div className="commandKeyword">
+	    <label htmlFor="commandKeyword">Enter command keyword: </label>
+            <input id="commandKeyword" name="commandKeyword" type="text" />
+        </div>
+	<div className="expectedVal">
+	    <label htmlFor="expectedVal">Enter expected value: </label>
+            <input id="expectedVal" name="expectedVal" type="text" />
+        </div>
+	<div className="submit">
+	    <button>Submit!</button>
+	</div>
       </form> 
     );
   }
