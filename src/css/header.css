@@ -1,0 +1,36 @@
+.header1x{
+    position: relative;
+    height: 100px;
+    width: 100%;
+     background-image: url("../image/header.png") ;
+
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+   
+   
+}
+
+.red-head{
+    
+    height: 90px;
+    background-color: rgb(165, 30, 33);
+    width: 70%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+#red-logo{
+    height: 80px;
+}
+
+#slacklogo{
+    height: 30px;
+    border-radius: 5px;
+}
