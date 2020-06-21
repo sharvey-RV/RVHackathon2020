@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import MyForm from './MyForm';
-import NavBar1 from './components/navbar'
+import MyForm from './components/MyForm';
+import MyTable from './components/MyTable';
+import NavBar1 from './components/navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
-import redVen from './image/Red-Ventures.jpg'
-import slackLogo from './image/slacklogo.png'
+import redVen from './image/Red-Ventures.jpg';
+import slackLogo from './image/slacklogo.png';
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
         <div className="container">
 
           <MyForm handleSubmit={this.handleSubmit} />
+	  <MyTable/>
         </div>
       </React.Fragment>
     )
