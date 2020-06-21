@@ -7,37 +7,38 @@ class MyTable extends Component {
   state = {  
     slackCommands: [],  
     columns: [{  
-      dataField: 'Command',  
-      text: 'Command',
+      dataField: "Command",  
+      text: "Command",
       sort: true,
-      filter: textFilter()
+      //filter: textFilter()
     },  
     {  
-      dataField: 'Body',  
-      text: 'Body',  
+      dataField: "Body",  
+      text: "Body",  
       sort:true  
     }]  
   }  
-componentWillMount() {
+componentDidMount() {
     axios.get('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/getcommands')
       .then(response => {
+	console.log(response);
         this.setState({
-          products: response.data
+          slackCommands: response.data
         });
       });
   }  
-//componentDidUpdate() {    
-    //fetch('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/addcommand',		       {
-      //method: 'GET',
-    //});    
-  //}  
+/*componentDidUpdate() {    
+    fetch('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/getcommands',		       {
+      method: 'GET',
+    });    
+  }*/  
   render() {  
     return (  
       <div className="container" style={{ marginTop: 50 }}>
 	<BootstrapTable
 	striped
 	hover
-	keyField='id'
+	keyField="Command"
 	data= { this.state.slackCommands }
 	columns= {this.state.columns}
 	filter={ filterFactory() } />
