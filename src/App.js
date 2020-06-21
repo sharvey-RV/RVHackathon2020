@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
 import redVen from './image/Red-Ventures.jpg';
 import slackLogo from './image/slacklogo.png';
+import Header from './components/header'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
 
@@ -16,20 +18,18 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar1 />
-        <div id="diver"></div>
-        <div className="header1x">
+        <Header></Header>
 
-          <div className="red-head">
-            <img src={redVen} id="red-logo" alt="red logo" />
-            <img src={slackLogo} id="slacklogo" alt="slack logo" />
-          </div>
-        </div>
-        <div className="container">
+        <Router>
 
-          <MyForm handleSubmit={this.handleSubmit} />
-	  <MyTable/>
-        </div>
+          <Switch>
+            <Route exact path='/' >
+              <MyForm handleSubmit={this.handleSubmit} />
+            </Route>
+
+            <Route path='/about' />
+          </Switch>
+        </Router>
       </React.Fragment>
     )
   }
