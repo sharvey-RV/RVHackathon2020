@@ -10,7 +10,7 @@ class MyTable extends Component {
       dataField: "Command",  
       text: "Command",
       sort: true,
-      //filter: textFilter()
+      filter: textFilter()
     },  
     {  
       dataField: "Body",  
@@ -27,11 +27,7 @@ componentDidMount() {
         });
       });
   }  
-/*componentDidUpdate() {    
-    fetch('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/getcommands',		       {
-      method: 'GET',
-    });    
-  }*/  
+
   render() {  
     return (  
       <div className="container" style={{ marginTop: 50 }}>
