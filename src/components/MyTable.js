@@ -34,7 +34,9 @@ class EditForm extends React.Component {
       body: JSON.stringify(data)
     });
   }
-
+  handleCmdChange = (event) => {
+    this.setState({ command: event.target.value });
+  }
   handleBodChange(event) {
     this.setState({ body: event.target.value });
   }
@@ -49,7 +51,7 @@ class EditForm extends React.Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="command">
             <Form.Label htmlFor="command">Enter Command: </Form.Label>
-            <Form.Control id="command" name="command" placeholder="Command" type="text" value={this.state.command}/>
+            <Form.Control id="command" name="command" placeholder="Command" type="text" value={this.state.command} onChange={this.handleCmdChange}/>
           </Form.Group>
           <Form.Group className="body">
             <Form.Label htmlFor="body">Enter Body: </Form.Label>
