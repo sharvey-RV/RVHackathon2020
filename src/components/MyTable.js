@@ -6,10 +6,6 @@ import { Button } from 'react-bootstrap';
 import '../css/home.css';
 import axios from 'axios';
 
-function updateEditState(cmdText) {
-  this.setState({command : cmdText})
-}
-
 class EditForm extends React.Component {
   constructor(props) {
     super();
@@ -18,8 +14,9 @@ class EditForm extends React.Component {
       command: '',
       type: 'endpoint'
     }
-    updateEditState = updateEditState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCmdChange = this.handleCmdChange.bind(this);
+    this.handleTypChange = this.handleTypChange.bind(this);
     this.handleBodChange = this.handleBodChange.bind(this);
   }
 
@@ -33,6 +30,7 @@ class EditForm extends React.Component {
       method: 'PUT',
       body: JSON.stringify(data)
     });
+    alert("Your command was updated! Refresh this page to see changes");
   }
   handleCmdChange = (event) => {
     this.setState({ command: event.target.value });
@@ -140,16 +138,6 @@ componentDidMount() {
     );
   };
 
-  linkEdit = (cell, row, rowIndex, formatExtraData) => {
-    console.log(row);
-    updateEditState(row["Command"]);
-    return (
-      <Button
-	onClick={() => {
-	  this.setState({editingCmd: row["Command"]}, () => {console.log(this.state.editingCmd)});
-	}}>Edit</Button>
-    );
-  };  
 
   render() {  
     return (  

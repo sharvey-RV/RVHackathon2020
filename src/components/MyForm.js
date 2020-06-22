@@ -29,6 +29,7 @@ class MyForm extends React.Component {
       method: 'POST',
       body: JSON.stringify(data)
     });
+    alert("Your comamand '"+this.state.command+"' was added!");
   }
 
   handleCmdChange(event) {
