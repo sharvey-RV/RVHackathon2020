@@ -1,0 +1,21 @@
+.containerx{
+    /* background-color: brown; */
+width: 80%;
+margin: auto;
+padding: 30px;
+    
+    -webkit-box-shadow: 0px 3px 23px -8px rgba(163,163,163,1);
+-moz-box-shadow: 0px 3px 23px -8px rgba(163,163,163,1);
+box-shadow: 0px 3px 23px -8px rgba(163,163,163,1);
+
+box-sizing: border-box;
+overflow: hidden;
+}
+
+.parragraph-container{
+padding: 10px;
+}
+.example-img{
+    max-width: 100%;
+    max-height: 100%;
+}
