@@ -48,11 +48,11 @@ class MyForm extends React.Component {
 	<h1 style={{ marginTop: "20px" }}>Add Commands</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="command">
-            <Form.Label htmlFor="command">Enter command: </Form.Label>
+            <Form.Label htmlFor="command">Enter Command: </Form.Label>
             <Form.Control id="command" name="command" placeholder="Command" type="text" onChange={this.handleCmdChange} value={this.state.command} />
           </Form.Group>
           <Form.Group className="body">
-            <Form.Label htmlFor="body">Enter body: </Form.Label>
+            <Form.Label htmlFor="body">Enter Body: </Form.Label>
             <Form.Control id="body" name="body" placeholder="Body" type="text" onChange={this.handleBodChange} value={this.state.body} />
           </Form.Group>
           <Form.Group controlId="typeDropdown">

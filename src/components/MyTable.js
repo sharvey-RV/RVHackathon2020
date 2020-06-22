@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
-import BootstrapTable, { DeleteButton } from 'react-bootstrap-table-next';  
+import BootstrapTable from 'react-bootstrap-table-next';  
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import { Button } from 'react-bootstrap';
 import '../css/home.css';
 import axios from 'axios';
 
@@ -25,10 +26,28 @@ class MyTable extends Component {
       text: "Type",
       sort: true
     },
+    {
+      dataField: "Delete",
+      text: "Delete",
+      formatter: this.linkDelete,
+      sort: true
+    },
     ]  
   };
-  this.createDelButton.bind(this);
 }
+
+makeDeleteCall = (row, rowIndex) => {
+  const cmdData = row["Command"];
+  const data = { "Command": cmdData }
+  console.log(data);
+  fetch("https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/deletecommand", {
+    method: 'PUT',
+    body: JSON.stringify(data)
+  });
+  this.state.slackCommands.splice(rowIndex,1);  
+  this.setState({slackCommands : this.state.slackCommands }, () => {console.log(this.state.slackCommands)});
+}
+
 componentDidMount() {
     axios.get('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/getcommands')
       .then(response => {
@@ -37,32 +56,19 @@ componentDidMount() {
           slackCommands: response.data
         });
       });
-  } 
-
-  handleDeleteButtonClick = (onClick) => {
-    console.log('This is my custom function for DeleteButton click event');
-    //onClick();
   }
-  createDelButton = (onClick) => {
-    console.log("here");
+
+  linkDelete = (cell, row, rowIndex, formatExtraData) => {
+    console.log(row);
     return (
-      <DeleteButton
-        btnText='CustomDeleteText'
-        btnContextual='btn-warning'
-        className='my-custom-class'
-        btnGlyphicon='glyphicon-edit'
-        onClick={ () => this.handleDeleteButtonClick(onClick) }/>
+      <Button
+	onClick={() => {
+	  this.makeDeleteCall(row, rowIndex);
+	}}>Delete</Button>
     );
-  }
-
-  /*const tblOptions = {
-    deleteBtn: this.createCustomDeleteButton
-  };*/
+  };
 
   render() {  
-    const options = {
-      deleteBtn: this.createDelButton
-    }; 
     return (  
       <React.Fragment>
       <div className="containerx">
@@ -73,7 +79,6 @@ componentDidMount() {
 	keyField="Command"
 	data= { this.state.slackCommands }
 	columns= {this.state.columns}
-	options= { options } deleteRow
 	filter={ filterFactory() } />
       </div>
       </React.Fragment>
