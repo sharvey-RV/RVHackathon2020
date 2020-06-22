@@ -16,13 +16,16 @@ class App extends Component {
         <Header></Header>
         <Router>
           <Switch>
-            <Route exact path='/View' >
+            <Route exact path='/'>
+	      <MyTable/>
+	    </Route>
+	    <Route path='/View' >
               <MyTable/>
             </Route>
-            <Route exact path='/Add'>
+            <Route path='/Add'>
 	      <MyForm handleSubmit={this.handleSubmit}/>
 	    </Route>
-            <Route exact path='/Doc'>
+            <Route path='/Doc'>
 	      <Home/>
 	    </Route>
           </Switch>
