@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
-import jarvis from "../image/jarvislogo.png"
+import { Navbar, Nav } from 'react-bootstrap';
+import jarvis from "../image/jarvislogo.png";
+import slackIcon from '../image/slackicon.png';
 
 
 class NavBar1 extends Component {
@@ -18,14 +19,12 @@ class NavBar1 extends Component {
                         <Nav.Link href="/Doc">Documentation</Nav.Link>
 
                     </Nav>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                    <Nav.Link href="https://app.slack.com/client/T015JBLB1GD/ "><img src={slackIcon} alt="slack" style={{height:"30px"}}/></Nav.Link>
                 </Navbar.Collapse>
-            </Navbar>
-        );
+                </Navbar> );
     }
+
+                 
 }
 
 export default NavBar1;
