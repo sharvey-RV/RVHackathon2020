@@ -11,9 +11,10 @@ class NavBar1 extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/View">View Commands</Nav.Link>
-                        <Nav.Link href="/edit">Edit Commands</Nav.Link>
+		        <Nav.Link href="/View">View Commands</Nav.Link>
+                        <Nav.Link href="/Add">Add Commands</Nav.Link>
+                        <Nav.Link href="/Edit">Edit Commands</Nav.Link>
+		        <Nav.Link href="/Doc">Documentation</Nav.Link>
 
                     </Nav>
                     <Form inline>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MyTable from './components/MyTable';
+import MyForm from './components/MyForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
 import Home from './components/Home'
@@ -15,13 +16,15 @@ class App extends Component {
         <Header></Header>
         <Router>
           <Switch>
-            <Route exact path='/' >
-              <Home />
+            <Route exact path='/View' >
+              <MyTable/>
             </Route>
-            <Route exact path='/View'>
-	      <MyTable/>
+            <Route exact path='/Add'>
+	      <MyForm handleSubmit={this.handleSubmit}/>
 	    </Route>
-            <Route path='/about' />
+            <Route exact path='/Doc'>
+	      <Home/>
+	    </Route>
           </Switch>
         </Router>
       </React.Fragment>

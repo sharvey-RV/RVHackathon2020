@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import '../css/home.css'
 
 class MyForm extends React.Component {
   constructor(props) {
@@ -42,7 +43,9 @@ class MyForm extends React.Component {
   render() {
 
     return (
-      <div className="">
+      <React.Fragment>
+      <div className="containerx">
+	<h1 style={{ marginTop: "20px" }}>Add Commands</h1>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="command">
             <Form.Label htmlFor="command">Enter command: </Form.Label>
@@ -62,6 +65,7 @@ class MyForm extends React.Component {
 	  <Button variant="primary" type="submit">Submit!</Button>
         </Form>
       </div>
+      </React.Fragment>
     );
   }
 }
