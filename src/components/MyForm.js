@@ -7,7 +7,8 @@ class MyForm extends React.Component {
     super();
     this.state = {
       body: '',
-      command: ''
+      command: '',
+      type: 'endpoint'
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCmdChange = this.handleCmdChange.bind(this);
@@ -19,8 +20,9 @@ class MyForm extends React.Component {
     console.log(event.target);
     const cmdData = this.state.command;
     const bodData = this.state.body;
+    const typData = this.state.type;
     console.log("sending data to backend");
-    const data = { "Command": cmdData, "Body": bodData }
+    const data = { "Command": cmdData, "Body": bodData, "Type":typData }
     console.log(data);
     fetch('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/addcommand', {
       method: 'POST',
@@ -34,11 +36,13 @@ class MyForm extends React.Component {
   handleBodChange(event) {
     this.setState({ body: event.target.value });
   }
-
+  handleTypChange = (event) => {
+    this.setState({ type: event.target.value });
+  }
   render() {
 
     return (
-      <div className="container">
+      <div className="">
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="command">
             <Form.Label htmlFor="command">Enter command: </Form.Label>
@@ -48,25 +52,17 @@ class MyForm extends React.Component {
             <Form.Label htmlFor="body">Enter body: </Form.Label>
             <Form.Control id="body" name="body" placeholder="Body" type="text" onChange={this.handleBodChange} value={this.state.body} />
           </Form.Group>
-          <Button variant="primary" type="submit">Submit!</Button>
+          <Form.Group controlId="typeDropdown">
+    	    <Form.Label>Choose Type:</Form.Label>
+    	    <Form.Control as="select" onChange={this.handleTypChange} value={this.state.type}>
+              <option>endpoint</option>
+              <option>string</option>
+            </Form.Control>
+          </Form.Group> 
+	  <Button variant="primary" type="submit">Submit!</Button>
         </Form>
       </div>
     );
-    /*return (
-      <form onSubmit={this.handleSubmit}>
-	<div className="command">
-	    <label htmlFor="command">Enter command: </label>
-            <input id="command" name="command" placeholder="Command" type="text" onChange={this.handleCmdChange} value={this.state.command}/>
-        </div>
-	<div className="body">
-	    <label htmlFor="body">Enter body: </label>
-            <input id="body" name="body" placeholder="Body" type="text" onChange={this.handleBodChange} value={this.state.body}/>
-        </div>
-	<div className="submit">
-	    <button>Submit!</button>
-	</div>
-      </form> 
-    );*/
   }
 }
 

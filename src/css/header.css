@@ -27,7 +27,8 @@
 
 
 #red-logo{
-    height: 80px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #slacklogo{
