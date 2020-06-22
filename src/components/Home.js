@@ -17,12 +17,15 @@ class Home extends Component {
                         <h2 style={{ marginTop: "10px" }}>Use case</h2>
                         <p>The command is any key word you like to link the API endpoint to view any data you want!</p>
                         <h2 style={{ marginTop: "10px" }}>Example</h2>
-                        <p><b>Command use:</b> In Slack use <code>/execute</code> GetEmployee. <b>("GetEmployee"</b> is the command added by this web form<b>)</b></p>
-                        <p><b>Body use:</b> The <code>Body</code> set in this web form will be stored in the database to be able to query it when using slack.</p>
-                        <img src={exampleimg} alt="example image" class="example-img"></img>
-                        <hr></hr>
-                        <p>To get this <code>JSON</code> data from the requested endpoint in this example: <code></code></p>
-                        <img src={slackJsonImg} alt="example image" class="example-img"></img>
+                        <div className="parragraph-container">
+                            <h3 style={{ marginTop: "10px" }}>Endpoint Example</h3>
+                            <p><b>Command use:</b> In Slack use <code>/execute</code> GetEmployee. <b>("GetEmployee"</b> is the command added by this web form<b>)</b></p>
+                            <p><b>Body use:</b> The <code>Body</code> set in this web form will be stored in the database to be able to query it when using slack.</p>
+                            <img src={exampleimg} alt="example slack" className="example-img" />
+                            <hr></hr>
+                            <p>To get this <code>JSON</code> data from the requested endpoint in this example: <code></code></p>
+                            <img src={slackJsonImg} alt="example json" className="example-img" />
+                        </div>
                     </div>
 
                 </div>
