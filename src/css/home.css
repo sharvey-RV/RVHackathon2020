@@ -20,6 +20,9 @@ padding: 10px;
     max-height: 100%;
 }
 
+.react-bootstrap-table{
+  overflow:scroll;
+}
 @media only screen and (max-width: 600px) {
 
    
