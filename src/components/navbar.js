@@ -19,12 +19,12 @@ class NavBar1 extends Component {
                         <Nav.Link href="/Doc">Documentation</Nav.Link>
 
                     </Nav>
-                    <Nav.Link href="https://app.slack.com/client/T015JBLB1GD/ "><img src={slackIcon} alt="slack" style={{height:"30px"}}/></Nav.Link>
+                    <Nav.Link href="https://app.slack.com/client/T015JBLB1GD/"><img src={slackIcon} alt="slack" style={{ height: "30px" }} /></Nav.Link>
                 </Navbar.Collapse>
-                </Navbar> );
+            </Navbar>);
     }
 
-                 
+
 }
 
 export default NavBar1;
