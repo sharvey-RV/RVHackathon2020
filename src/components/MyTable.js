@@ -1,14 +1,86 @@
 import React, { Component } from 'react'; 
+import Form from 'react-bootstrap/Form';
 import BootstrapTable from 'react-bootstrap-table-next';  
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import { Button } from 'react-bootstrap';
 import '../css/home.css';
 import axios from 'axios';
 
+function updateEditState(cmdText) {
+  this.setState({command : cmdText})
+}
+
+class EditForm extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      body: '',
+      command: '',
+      type: 'endpoint'
+    }
+    updateEditState = updateEditState.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCmdChange = this.handleCmdChange.bind(this);
+    this.handleBodChange = this.handleBodChange.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const cmdData = this.state.command;
+    const bodData = this.state.body;
+    const typData = this.state.type;
+    console.log("sending data to backend");
+    const data = { "Command": cmdData, "NewBody": bodData, "NewType":typData }
+    console.log(data);
+    fetch('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/updatecommand', {
+      method: 'PUT',
+      body: JSON.stringify(data)
+    });
+  }
+
+  handleCmdChange(event) {
+    this.setState({ command: event.target.value });
+  }
+  handleBodChange(event) {
+    this.setState({ body: event.target.value });
+  }
+  handleTypChange = (event) => {
+    this.setState({ type: event.target.value });
+  }
+  render() {
+    return (
+      <React.Fragment>
+      <div className="">
+	<h1 style={{ marginTop: "20px" }}>Edit Command</h1>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group className="command">
+            <Form.Label htmlFor="command">Enter Command: </Form.Label>
+            <Form.Control id="command" name="command" placeholder="Command" type="text" value={this.state.command}/>
+          </Form.Group>
+          <Form.Group className="body">
+            <Form.Label htmlFor="body">Enter Body: </Form.Label>
+	    <Form.Control id="body" name="body" placeholder="Body" type="text" onChange={this.handleBodChange} value={this.state.body} />
+	  </Form.Group>
+	  <Form.Group controlId="typeDropdown">
+	    <Form.Label>Choose Type:</Form.Label>
+	    <Form.Control as="select" onChange={this.handleTypChange} value={this.state.type}>
+	      <option>endpoint</option>
+	      <option>string</option>
+	    </Form.Control>
+	  </Form.Group>
+	  <Button variant="primary" type="submit">Submit!</Button>
+	</Form>
+	<p>(Refresh page to see changes in table)</p>
+      </div>
+      </React.Fragment>
+    );
+  }
+}
 class MyTable extends Component {  
   constructor() {
     super();
     this.state = {  
+    editingCmd: "",
     slackCommands: [],  
     columns: [{  
       dataField: "Command",  
@@ -30,6 +102,12 @@ class MyTable extends Component {
       dataField: "Delete",
       text: "Delete",
       formatter: this.linkDelete,
+      sort: true
+    },
+    {
+      dataField: "Edit",
+      text: "Edit",
+      formatter: this.linkEdit,
       sort: true
     },
     ]  
@@ -59,7 +137,6 @@ componentDidMount() {
   }
 
   linkDelete = (cell, row, rowIndex, formatExtraData) => {
-    console.log(row);
     return (
       <Button
 	onClick={() => {
@@ -68,6 +145,21 @@ componentDidMount() {
     );
   };
 
+  linkEdit = (cell, row, rowIndex, formatExtraData) => {
+    console.log(row);
+    this.updateChild(row["Command"]);
+    return (
+      <Button
+	onClick={() => {
+	  this.setState({editingCmd: row["Command"]}, () => {console.log(this.state.editingCmd)});
+	}}>Edit</Button>
+    );
+  };  
+
+  updateChild(cmdText) {
+    updateEditState(cmdText)
+  }
+ 
   render() {  
     return (  
       <React.Fragment>
@@ -80,10 +172,15 @@ componentDidMount() {
 	data= { this.state.slackCommands }
 	columns= {this.state.columns}
 	filter={ filterFactory() } />
+	<div className = "">
+	    <EditForm/>
+	</div>
       </div>
       </React.Fragment>
     );  
   }   
 }
-  
+
+
+
 export default MyTable;

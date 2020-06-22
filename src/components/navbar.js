@@ -15,7 +15,6 @@ class NavBar1 extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="/View">View Commands</Nav.Link>
                         <Nav.Link href="/Add">Add Commands</Nav.Link>
-                        <Nav.Link href="/Edit">Edit Commands</Nav.Link>
                         <Nav.Link href="/Doc">Documentation</Nav.Link>
 
                     </Nav>
