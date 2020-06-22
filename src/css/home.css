@@ -23,3 +23,23 @@ padding: 10px;
 .react-bootstrap-table{
   overflow:scroll;
 }
+@media only screen and (max-width: 600px) {
+
+   
+    .containerx h1{
+        font-size: 30px;
+    }
+
+    .containerx h2{
+        font-size: 22px;
+    }
+
+    .containerx h3{
+        font-size: 17px;
+    }
+    .containerx p{
+        font-size: 12px;
+    }
+    
+
+}
