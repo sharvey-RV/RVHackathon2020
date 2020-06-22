@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
-import MyForm from './MyForm'
 import '../css/home.css'
 import exampleimg from '../image/slackexample.png'
 import slackJsonImg from '../image/slackjson.png'
 
 class Home extends Component {
 
-    handleSubmit = command => {
-        //send to backend
-    }
-
     render() {
         return (
             <React.Fragment>
                 <div className="containerx">
-                    <h1>Add Endpoint Command</h1>
-                    <MyForm handleSubmit={this.handleSubmit} />
-
                     <h1 style={{ marginTop: "30px" }}>Documentation</h1>
                     <div className="parragraph-container">
                         <p>This a form to add commands to be able to execute in slack.</p>
