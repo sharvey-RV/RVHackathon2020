@@ -20,7 +20,6 @@ class EditForm extends React.Component {
     }
     updateEditState = updateEditState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCmdChange = this.handleCmdChange.bind(this);
     this.handleBodChange = this.handleBodChange.bind(this);
   }
 
@@ -29,18 +28,13 @@ class EditForm extends React.Component {
     const cmdData = this.state.command;
     const bodData = this.state.body;
     const typData = this.state.type;
-    console.log("sending data to backend");
     const data = { "Command": cmdData, "NewBody": bodData, "NewType":typData }
-    console.log(data);
     fetch('https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/updatecommand', {
       method: 'PUT',
       body: JSON.stringify(data)
     });
   }
 
-  handleCmdChange(event) {
-    this.setState({ command: event.target.value });
-  }
   handleBodChange(event) {
     this.setState({ body: event.target.value });
   }
@@ -117,7 +111,6 @@ class MyTable extends Component {
 makeDeleteCall = (row, rowIndex) => {
   const cmdData = row["Command"];
   const data = { "Command": cmdData }
-  console.log(data);
   fetch("https://h6d3rqs549.execute-api.us-west-1.amazonaws.com/TestProd/deletecommand", {
     method: 'PUT',
     body: JSON.stringify(data)
@@ -147,7 +140,7 @@ componentDidMount() {
 
   linkEdit = (cell, row, rowIndex, formatExtraData) => {
     console.log(row);
-    this.updateChild(row["Command"]);
+    updateEditState(row["Command"]);
     return (
       <Button
 	onClick={() => {
@@ -156,10 +149,6 @@ componentDidMount() {
     );
   };  
 
-  updateChild(cmdText) {
-    updateEditState(cmdText)
-  }
- 
   render() {  
     return (  
       <React.Fragment>
