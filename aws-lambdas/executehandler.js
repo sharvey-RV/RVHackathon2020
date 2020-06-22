@@ -55,7 +55,17 @@ exports.handler = async (event, context, callback) => {
   
         //Post Respose
         const content = await rawResponse.json();
+        
+        if (content.sqlResults == null) {
+            const responsee = {
+            response_type: "in_channel",
+              text: "No Command Found",
+            // attachments: [attachment]
+             }
 
+            res.body=JSON.stringify(responsee);
+            callback(null,res);
+        }
         //Save SQL Post response values 
         const sqlBody = content.sqlResults[0];
         const sqlType = content.sqlResults[1];
