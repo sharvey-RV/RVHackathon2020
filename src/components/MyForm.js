@@ -38,7 +38,7 @@ class MyForm extends React.Component {
   render() {
 
     return (
-      <div className="container">
+      <div className="">
         <Form onSubmit={this.handleSubmit}>
           <Form.Group className="command">
             <Form.Label htmlFor="command">Enter command: </Form.Label>

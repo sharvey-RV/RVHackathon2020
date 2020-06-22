@@ -3,14 +3,14 @@ import MyForm from './components/MyForm';
 import MyTable from './components/MyTable';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
+import redVen from './image/Red-Ventures.jpg';
+import slackLogo from './image/slacklogo.png';
+import Home from './components/Home'
 import Header from './components/header'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
 
-  handleSubmit = command => {
-    //send to backend
-  }
 
   render() {
     return (
@@ -19,7 +19,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path='/' >
-              <MyForm handleSubmit={this.handleSubmit} />
+              <Home />
             </Route>
             <Route exact path='/View'>
 	      <MyTable/>
